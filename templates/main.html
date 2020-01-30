@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>div#preloader {
+  /*фиксированное позиционирование*/
+    display: none;
+  position: fixed;
+  /* координаты положения */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* фоновый цвет элемента */
+  background: #e0e0e0;
+  /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+  z-index: 1001;
+}
+
+    .preloader__row {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+      margin-top: -35px;
+      margin-left: -35px;
+      text-align: center;
+      animation: preloader-rotate 2s infinite linear;
+    }
+
+    .preloader__item {
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      background-color: #337ab7;
+      border-radius: 100%;
+      width: 35px;
+      height: 35px;
+      animation: preloader-bounce 2s infinite ease-in-out;
+    }
+
+    .preloader__item:last-child {
+      top: auto;
+      bottom: 0;
+      animation-delay: -1s;
+    }
+@keyframes preloader-rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes preloader-bounce {
+
+      0%,
+      100% {
+        transform: scale(0);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+    }
+
+    .loaded_hiding .preloader {
+      transition: 0.3s opacity;
+      opacity: 0;
+    }
+
+    .loaded .preloader {
+      display: none;
+    }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+
+
+
+</style>
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#preloader").show();
+            $("#content").hide();
+        }
+// ]]></script>
+
+</head>
+<body>
+<div id="preloader">
+  <div class="preloader__row">
+    <div class="preloader__item"></div>
+    <div class="preloader__item"></div>
+
+  </div>
+    <h1>Обработка может занять несколько минут. Спасибо за ожидание...</h1>
+</div>
+<div id="content">
+    <h1>Вас приветствует автоматическая система предсказания результатов ГИА-9, созданная на основе искусственного
+        интелекта. Благодаря мне вы можете узнать какие предметы вероятнее всего будут сдавать ваши ученики и на какую оценку они их
+        сдадут. Вам нужно просто экспортировать классный журнал за 8 класс в один из поддерживаемых форматов. <h1 style = "color: #ff0000">!Внимание для полного и точного прогноза мне нужны все оценки!</h1></h1>
+       <h3>Зарузите файл MSExcel (csv, tsv, csvz, tsvz, xls, xlsx):</h3>
+        <form action="/upload" method=post enctype=multipart/form-data><p>
+        <input type=file name=file required><input type=submit value=Upload onclick="loading();">
+        </form>
+</div>
+</body>
+</html>

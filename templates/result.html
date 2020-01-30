@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EDM-AI</title>
+    <style>
+table {
+    width: 100%; /* Ширина таблицы */
+    border: 1px solid #399; /* Граница вокруг таблицы */
+    border-spacing: 3px 2px; /* Расстояние между границ */
+   }
+   td {
+    background: #fff; /* Цвет фона */
+    border: 0.5px solid black; /* Граница вокруг ячеек */
+    padding: 5px; /* Поля в ячейках */
+   }
+        .registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;}
+    </style>
+</head>
+<body>
+<table>
+{{ time }}
+    <tr><td>ФИО</td><td>Математика</td> <td>Русский язык</td> <td>Физика</td> <td>Химия</td> <td>Информатика и ИКТ</td> <td>Биология</td> <td>География</td> <td>История</td> <td>Обществознание</td> <td>Литература</td> <td>Английский язык</td></tr>
+     {% for post in posts %}
+    <tr>
+        {% for pos in post %}
+        {% if pos.color == 2 %}
+        <td style = "background: #ffccff;">
+            <p>{{pos.value}}</p>
+        </td>
+        {% endif %}
+        {% if pos.color == 1 %}
+        <td style = "background: #00ff00;">{% for i in pos.value %}
+            <p>{{i}}</p>
+        {% endfor %}
+        </td>
+        {% endif %}
+        {% if pos.color == 0 %}
+        <td style = "background: #a0c0c0;">{% for i in pos.value %}
+            <p>{{i}}</p>
+        {% endfor %}
+        </td>
+        {% endif %}
+            {% if pos.color == 3 %}
+        <td style = "background: #fc0;">{% for i in pos.value %}
+            <p>{{i}}</p>
+        {% endfor %}
+        </td>
+        {% endif %}
+            {% if pos.color == 4 %}
+        <td style = "background: #ff0000;">{% for i in pos.value %}
+            <p>{{i}}</p>
+        {% endfor %}
+        </td>
+        {% endif %}
+            {% if pos.color == 5 %}
+        <td style = "background: #ff6000;">{% for i in pos.value %}
+            <p>{{i}}</p>
+        {% endfor %}
+        </td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+<form action="/" method=post enctype=multipart/form-data><p>
+        <input type=submit value="Новый прогноз" class="registerbtn" onclick="loading();">
+        </form>
+</table>
+</body>
+</html>
